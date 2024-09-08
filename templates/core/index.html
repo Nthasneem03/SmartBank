@@ -1,0 +1,141 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block head_title %}Smart Bank{% endblock %}
+
+{% block content %}
+    
+    <!-- Main Section -->
+    <main>
+        <!-- Hero Section -->
+        <section class="home" id="home">
+            <div class="home-img-box">
+                <img src="{% static 'images/image-mockups.png' %}" alt="Image" class="home-img" width="100%" />
+            </div>
+            <div class="home-card text-center">
+                <h1 class="home-title">Next Generation Smart Digital Banking</h1>
+                <p class="home-text">
+                    Take your financial life online with Smart Bank. Our comprehensive platform is your one-stop solution for spending, saving, budgeting, investing, and more. Manage your accounts, transfer funds, pay bills, and track your transactions effortlessly.
+                </p>
+                <button>
+                    <a href="{% url 'accounts:user_registration' %}" class="btn btn-custom">Get Started</a>
+                </button>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-text">
+                Our comprehensive platform offers a wide range of services to cater to your financial needs. From spending and saving to investing and managing your financial future, Smart Bank is designed to provide a seamless and efficient banking experience.
+            </p>
+            <div class="service-card-group">
+                <div class="service-card">
+                    <img src="{% static 'images/icon-online.png' %}" alt="Online" class="card-icon" />
+                    <h3 class="card-title">Online Banking</h3>
+                    <p class="card-text">
+                        Our modern web and mobile applications allow you to keep track of your finances wherever you are in the world.
+                    </p>
+                </div>
+                <div class="service-card ">
+                    <img src="{% static 'images/icon-api.png' %}" alt="Secure Transactions" class="card-icon" />
+                    <h3 class="card-title">Secure Transactions</h3>
+                    <p class="card-text">
+                        We use advanced encryption technologies to ensure that your transactions are safe and secure. Your financial information is protected against unauthorized access.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <img src="{% static 'images/icon-onboarding.png' %}" alt="24/7 Customer Support" class="card-icon" />
+                    <h3 class="card-title">24/7 Customer Support</h3>
+                    <p class="card-text">
+                        Our dedicated support team is available around the clock to assist you with any queries or issues you may have. We're here to help whenever you need us.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <img src="{% static 'images/icon-budgeting.png' %}" alt="Convenient Access" class="card-icon" />
+                    <h3 class="card-title">Convenient Access</h3>
+                    <p class="card-text">
+                        Manage your finances from anywhere with our user-friendly online and mobile banking platforms. Enjoy the flexibility to handle your banking needs at your convenience.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="blog" id="blog">
+            <h2 class="section-title">Latest Articles</h2>
+
+            <div class="mx-5 my-5">
+                <div class="card-group mb-2 row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    <div class="col my-2">
+                        <div class="card mb-2 g-sm-2 h-100">
+                            <img src="{% static 'images/global-money.jpg' %}" class="card-img-top" alt="Blog" />
+                            <div class="card-body">
+                                <p class="text-muted">
+                                    By <a href="#" class="text-decoration-none">Rachel Green</a>
+                                </p>
+                                <h5 class="card-title">
+                                    <a href="#" class="text-decoration-none">Global Payment Solutions Explained</a>
+                                </h5>
+                                <p class="card-text">
+                                    Discover how businesses and individuals are leveraging global payment solutions to make international transactions smoother and more cost-effective.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col my-2 ">
+                        <div class="card mb-2 h-100">
+                            <img src="{% static 'images/crypto.jpg' %}" class="card-img-top" alt="Blog" />
+                            <div class="card-body">
+                                <p class="text-muted">
+                                    By <a href="#" class="text-decoration-none">David Silva</a>
+                                </p>
+                                <h5 class="card-title">
+                                    <a href="#" class="text-decoration-none">Cryptocurrency: Changing the Future of Transactions</a>
+                                </h5>
+                                <p class="card-text">
+                                    Learn how cryptocurrencies are gaining popularity for secure, decentralized transactions, and whether they could become the currency of tomorrow.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col my-2">
+                        <div class="card mb-2 h-100">
+                            <img src="{% static 'images/online-banking.jpeg' %}" class="card-img-top" alt="Blog" />
+                            <div class="card-body">
+                                <p class="text-muted">
+                                    By <a href="#" class="text-decoration-none">Sarah Thompson</a>
+                                </p>
+                                <h5 class="card-title">
+                                    <a href="#" class="text-decoration-none">The Rise of Digital Banking</a>
+                                </h5>
+                                <p class="card-text">
+                                    Explore how digital banking is simplifying everyday transactions, offering seamless account access, transfers, and payments at the click of a button.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col my-2">
+                        <div class="card mb-2 h-100">
+                            <img src="{% static 'images/finance.jpg' %}" class="card-img-top" alt="Blog" />
+                            <div class="card-body">
+                                <p class="text-muted">
+                                    By <a href="#" class="text-decoration-none">Michael Evans</a>
+                                </p>
+                                <h5 class="card-title">
+                                    <a href="#" class="text-decoration-none">How Fintech is Transforming Finance</a>
+                                </h5>
+                                <p class="card-text">
+                                    From mobile wallets to AI-based financial advice, fintech is changing the way we manage money. Find out the latest innovations in the financial sector.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+{% endblock %}

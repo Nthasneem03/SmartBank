@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block head_title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<section class='home transaction'>
+    <!-- Image Box -->
+    <div class="home-img-box">
+        <img src="{% static 'images/image-mockups.png' %}" alt="Image" class="home-img" width="100%" />
+    </div>
+
+    <!-- Account Info Section -->
+    <div class="home-card text-center mx-lg-5">
+        <!-- Dynamic Title -->
+        <h1 class="home-title" style="color: #2d314d;">{{ title }}</h1>
+
+        <!-- Account Information -->
+        <div class="border rounded p-4 mx-auto" style="border-color: #2d314d; max-width: 600px;">
+            <h2 class="home-title" style="color: #2d314d; font-size: 1.5rem;">Account Information</h2>
+            <p class="home-text" style="color: #2d314d; font-size: 1.1rem; line-height: 1.6;">
+                Hello, <span class="fw-bold">{{ account.user }}</span>.
+                <br>
+                Your current balance is ₹<span class="fw-bold">{{ account.balance|default:"0.00" }}</span>.
+            </p>
+        </div>
+
+        <!-- Form -->
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+
+            <div class="mb-3 mx-auto" style="max-width: 400px;">
+                <label class="form-label" for="amount" style="color: #2d314d;">Amount</label>
+                <input class="form-control border border-gray-300 rounded px-3" name="amount" id="amount" type="number" required placeholder="Enter amount" style="padding: 10px; margin: 0 auto;">
+                {% if form.amount.errors %}
+                    {% for error in form.amount.errors %}
+                        <p class="text-danger mt-2">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <!-- Submit and Cancel Buttons with Gap -->
+            <div class="d-flex justify-content-between gap-3 mx-auto mb-5" style="max-width: 400px;">
+                <button class="btn btn-dark w-100" type="submit" style="background: linear-gradient(90deg, #2d314d, #4b4f74); padding: 10px 0;">
+                    Submit
+                </button>
+                <a href="/" class="btn btn-outline-success w-100 text-center" style="border-color: #2d314d; color: #2d314d; padding: 10px 0;">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

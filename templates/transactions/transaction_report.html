@@ -1,0 +1,113 @@
+{% extends 'core/base.html' %}
+
+{% block head_title %}Transaction Report{% endblock %}
+
+{% block head_extra %}
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.css">
+
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="font-bold text-3xl text-center pb-5 pt-10 header-background">
+            Transaction Report
+        </h1>
+
+        <!-- Transaction Table -->
+        <table class="table mt-4">
+            <thead>
+                <tr class="text-center">
+                    <th>Transaction Type</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Balance After Transaction</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in object_list %}
+                <tr class="transaction-data {% if forloop.counter > object_list|length|add:-5 %}visible{% endif %}">
+                    <td class="text-center">{{ transaction.get_transaction_type_display }}</td>
+                    <td class="text-center">{{ transaction.timestamp }}</td>
+                    <td class="text-center">₹ {{ transaction.amount }}</td>
+                    <td class="text-center">₹ {{ transaction.balance_after_transaction }}</td>
+                </tr>
+                {% endfor %}
+                <!-- Final Balance Row always visible -->
+                <tr class="header-background final-balance visible">
+                    <th class="text-right" colspan="3">Final Balance</th>
+                    <th class="text-center">₹ {{ account.balance }}</th>
+                </tr>
+            </tbody>
+            
+        </table>
+
+        <!-- Show More and View Less Buttons -->
+        <div class="text-center mt-3">
+            <button id="showMore" class="btn ">View All</button>
+            <button id="viewLess" class="btn " style="display: none;">View Less</button>
+        </div>
+
+        <!-- Balance Chart -->
+        <div class="col-lg-6 graph-container">
+            <canvas id="balanceChart"></canvas>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_extra %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript">
+        // Balance Chart
+        const ctx = document.getElementById('balanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [{% for transaction in object_list %}"{{ transaction.timestamp|date:'Y-m-d' }}",{% endfor %}],
+                datasets: [{
+                    label: 'Balance Over Time',
+                    data: [{% for transaction in object_list %}{{ transaction.balance_after_transaction }}, {% endfor %}],
+                    borderColor: '#2d314d',
+                    backgroundColor: 'rgba(45, 49, 77, 0.2)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // JavaScript to handle "Show More" and "View Less" button functionality
+        document.getElementById('showMore').addEventListener('click', function() {
+            const rows = document.querySelectorAll('.table tbody tr:not(.final-balance)');
+            rows.forEach(row => row.classList.add('visible'));
+            this.style.display = 'none'; // Hide "Show More" button
+            document.getElementById('viewLess').style.display = 'inline-block'; // Show "View Less" button
+        });
+
+        document.getElementById('viewLess').addEventListener('click', function() {
+            const rows = document.querySelectorAll('.table tbody tr:not(.final-balance)');
+            rows.forEach((row, index) => {
+                if (index >= rows.length - 5) {
+                    row.classList.add('visible'); // Show last 5 rows
+                } else {
+                    row.classList.remove('visible'); // Hide other rows
+                }
+            });
+            this.style.display = 'none'; // Hide "View Less" button
+            document.getElementById('showMore').style.display = 'inline-block'; // Show "Show More" button
+        });
+
+    </script>
+{% endblock %}

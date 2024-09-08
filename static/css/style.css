@@ -1,0 +1,374 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* Colors */
+    --light-gray-blue: #f3f4f6;
+    --very-light-grey: #fafafa;
+    --grayish-blue: #9698a6;
+    --bright-cyan: #2bb7da;
+    --lime-green: #31d35c;
+    --dark-blue:#2d314d;
+    --white: #ffffff;
+    --gradient:linear-gradient(90deg, var(--lime-green), var(--bright-cyan));
+    /* Spacing */
+    --px: 20px;
+}
+
+/* reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    background: none;
+}
+
+html {
+    font-family: "Public Sans", sans-serif;
+    scroll-behavior: smooth;
+}
+
+img, span, svg {
+    display: block;
+}
+
+
+.btn-custom {
+    background: var(--gradient);
+    color: var(--white);
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+    margin: auto;
+    transition: 0.25s ease;
+}
+
+
+
+/* Main Section */
+
+main { 
+    overflow: hidden;
+    z-index: 2; 
+}
+
+.home {
+    background: var(--very-light-gray);
+    padding-bottom: 60px;
+}
+
+.home-img-box {
+    background: url(../images/bg-intro-mobile.png) no-repeat top;
+    background-size: cover;
+    margin-bottom: 40px;
+    z-index: 10;
+}
+
+.home-img-box .home-img {
+    object-fit: cover;
+    aspect-ratio:1/1;
+    object-position: bottom;
+    margin-top: 0;
+}
+
+
+.home-title {
+    font-size: 38px;
+    font-weight: 400;
+    color: var(--dark-blue);
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.home-text  {
+    margin: auto;
+    color:var(--grayish-blue) ;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+
+
+
+/* Services */
+
+.services {
+    padding: 60px var(--px);
+    background-color: var(--very-light-grey);
+    position: relative;
+    z-index: 1;
+}
+
+.services::before {
+    content: "";
+    position: absolute;
+    /* top: -50px; */
+    left: 0;
+    background-color: var(--very-light-grey);
+    width: 100%;
+    height: 50%; 
+    z-index:-1;
+}
+
+  
+.section-title {
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--dark-blue);
+    text-align: center;
+    margin-bottom: 30px;
+
+}
+
+.section-text  {
+    margin: auto;
+    color: var(--grayish-blue);
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 50px;
+}
+
+.service-card-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+.service-card {
+    text-align: center;
+}
+
+.service-card  .card-icon {
+    margin: auto;
+    margin-bottom: 30px;
+}
+.service-card .card-title {
+    color: var(--dark-blue);
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.service-card .card-text {
+    color: var(--grayish-blue);
+    font-size: 15px;
+    line-height: 1.7;
+}
+  
+
+
+
+
+/* Blog */
+
+.blog {
+    padding: 100px var(--px);
+    background: var(--very-light-grey);
+}
+
+.card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 202;
+}
+
+
+.blog .card-title {
+    color: var(--dark-blue);
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.blog .card-text {
+    color: var(--grayish-blue);
+}
+
+/* Footer */
+
+footer {
+    background: var(--dark-blue);
+    padding: 50px var(--px);
+
+}
+
+.footer-brand {
+    color: var(--white);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.footer-title {
+    font-weight: 400;
+    color: var(--very-light-grey);
+}
+
+.btn-social {
+    color: var(--white);
+    transition:all 0.2s ease;
+}
+
+.btn-social:hover {
+    color: var(--lime-green)
+}
+
+.footer-link {
+    font-weight: 400;
+    color: var(--grayish-blue);
+    transition:all 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--lime-green);
+
+}
+
+.footer-text {
+    color: var(--grayish-blue)
+}
+
+.btn-footer {
+    background: var(--gradient);
+    color: var(--white);
+    padding: 12px ;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+    margin: auto;
+    transition: 0.25s ease;
+}
+
+
+/* Media Queries */
+
+@media (min-width:768px) {
+    .home-text {
+        font-size: 18px;
+        max-width: 600px;
+    }
+
+
+    .section-text {
+        font-size: 18px;
+        max-width: 600px;
+        margin: auto;
+        margin-bottom: 50px;
+    }
+
+    .service-card-group {grid-template-columns: repeat(2,1fr);}
+
+    .card-img-top {
+        height: 222px;
+    }
+}
+
+@media (min-width:1024px) {
+
+    .home {
+        display:flex ;
+        flex-direction: row-reverse;
+        align-items: center;
+        padding: 0;
+    }
+
+    .navbar {
+        z-index: 1;
+    }
+
+    .home-img-box {
+        background: url(../images/bg-intro-desktop.png) no-repeat left;
+        background-size:150%;
+        margin: 0;
+        padding: 0;
+        width: 55%;
+        
+    }
+    
+    .home-img-box .home-img {
+        width: 60%;
+        transform: translate(250px,-10px) scale(1.3);
+        aspect-ratio: unset;
+    }
+
+    .transaction .home-img-box  {
+        overflow: hidden;
+    }
+
+    .service-card-group {grid-template-columns: repeat(4,1fr);}
+
+    .card-img-top {
+        height: 232px;
+    }
+}
+
+
+
+
+
+
+
+
+/* Transaction */
+.header-background,.final-balance {
+    color:var(--dark-blue);
+    font-weight: 400;
+}
+
+.table-primary th,.transaction-data,
+#viewLess,#showMore {
+    background-color:var(--dark-blue); 
+    color: var(--very-light-grey);
+}
+
+.transaction-data
+{
+   color:var(--dark-blue); 
+   background-color: var(--very-light-grey);
+}
+
+
+.graph-container {
+    margin-top: 30px;
+}
+
+/* Add border to the table */
+.table {
+    border: 2px solid var(--dark-blue); 
+    /* border-collapse: separate; */
+    border-radius: 0.25rem;
+}
+.table th, .table td {
+    border: 1px solid var(--dark-blue); 
+}
+.table thead th {
+    border-bottom: 2px solid var(--dark-blue) ;
+
+}
+/* Hide rows initially except the last 5 */
+.table tbody tr {
+    display: none;
+}
+.table tbody tr.visible {
+    display: table-row;
+}

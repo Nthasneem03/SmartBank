@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Bank</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    .navbar {
+      background-color: #2d314d;
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand " href="#">
+      {% load static %}
+      <img src="{% static 'images/logo3.png' %}" alt="logo" width="40" height="30" class="d-inline-block align-text-center pe-1" />
+      Smart Bank
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#services">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#blog">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#footer">Contact Us</a>
+        </li>
+      </ul>
+
+      <!-- User Authentication Section -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'transactions:transaction_report' %}" class="btn m-1 btn-outline-primary">Transactions</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'transactions:deposit_money' %}" class="btn m-1 btn-outline-success">Deposit</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'transactions:withdraw_money' %}" class="btn m-1 btn-outline-secondary">Withdraw</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'accounts:user_logout' %}" class="btn m-1 btn-outline-danger">Logout</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a href="{% url 'accounts:user_login' %}" class="btn m-1 btn-outline-primary">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'accounts:user_registration' %}" class="btn m-1 btn-outline-success">Register</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
